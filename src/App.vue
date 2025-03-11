@@ -31,7 +31,7 @@ const currentView = ref(Home);
 const counter = ref(0);
 
 
-const parentMessage = ref("Click for surprise");
+const parentMessage = ref("Click for surprise!");
 const handleButtonClick = () => {
   alert("SURPRISE!!!!");
 }; 
@@ -100,5 +100,5 @@ const handleButtonClick = () => {
 .content {
   padding-bottom: 5rem;
 }
-
+ 
 </style>
