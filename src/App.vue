@@ -14,27 +14,33 @@
         <SMAssignment1 :message="parentMessage" @buttonClicked="handleButtonClick" />
       </n-layout-content>
     </n-layout>
-  <n-layout-footer class="website_footer">    
-   <p>Button Clicks: {{ counter }}</p>
-   <n-button type="primary" @click="counter++">Click Here!</n-button>
-  </n-layout-footer>
+  <n-layout-footer class="website_footer">
+      <p>{{ infoStore.webInfo }}</p>
+      <div>
+        <p>Button Clicks: {{ counterStore.count }}</p>
+        <n-button type="primary" @click="counterStore.increment()">Click Here!</n-button>
+      </div>
+    </n-layout-footer>
   
 </template>
 
 <script setup>
 import { ref } from 'vue';
+import { useCounterStore } from './stores/counterStore';
+import { useInfoStore } from './stores/infoStore';
 import Home from './components/Home.vue';
 import ProjectSection from './components/ProjectSection.vue';
 import Contact from './components/Contact.vue';
 import SMAssignment1 from './components/SMAssignment1.vue';
 const currentView = ref(Home);
 const counter = ref(0);
-
-
+const counterStore = useCounterStore();
+const infoStore = useInfoStore();
 const parentMessage = ref("Click for surprise!");
 const handleButtonClick = () => {
   alert("SURPRISE!!!!");
-}; 
+};
+ 
 </script>
 
 <style scoped>
@@ -99,6 +105,7 @@ const handleButtonClick = () => {
 }
 .content {
   padding-bottom: 5rem;
+  
 }
  
 </style>
